@@ -6,11 +6,11 @@ import org.apache.logging.log4j.Logger;
 public class VulnerableLogin {
     private static final Logger logger = LogManager.getLogger(VulnerableLogin.class);
 
-    public static void main(String[] args) {
-        System.out.println("Sistema de Login Iniciado...");
+    private VulnerableLogin() {
+    }
 
-        String userInput = args.length > 0 ? args[0] : "usuario_anonimo";
-
-        logger.error("Falha de autenticacao para o usuario: " + userInput);
+    public static void logFailedAuthentication(String userInput) {
+        String normalizedUser = (userInput == null || userInput.isBlank()) ? "usuario_anonimo" : userInput;
+        logger.error("Falha de autenticacao para o usuario: " + normalizedUser);
     }
 }
